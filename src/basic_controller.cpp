@@ -22,9 +22,6 @@ class TurtlebotControl : public rclcpp::Node
       // Create a publisher object, able to push messages
       m_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
       
-      m_vel_linear = this->declare_parameter("linear_velocity", 0.0);
-      m_vel_angular = this->declare_parameter("angular_velocity", 0.0);
-
       // Create a timer to publish our messages periodically
       m_timer = this->create_wall_timer(50ms, std::bind(&TurtlebotControl::run, this));
     }
@@ -33,9 +30,6 @@ class TurtlebotControl : public rclcpp::Node
     void run()
     {
       auto message = geometry_msgs::msg::Twist();
-
-      message.linear.x = m_vel_linear;
-      message.angular.z = m_vel_angular;
 
       m_publisher->publish(message);
     }
