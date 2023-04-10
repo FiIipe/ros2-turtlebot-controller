@@ -15,7 +15,7 @@ class TurtlebotControl : public rclcpp::Node
 {
   public:
     TurtlebotControl()
-    : Node("turtlebot_control"), m_vel_linear(0.0), m_vel_angular(0.0) {
+    : Node("turtlebot_control") {
 
       RCLCPP_INFO(this->get_logger(), "Turtlebot controller node started.");
 
@@ -33,9 +33,6 @@ class TurtlebotControl : public rclcpp::Node
 
       m_publisher->publish(message);
     }
-    
-    double m_vel_linear;
-    double m_vel_angular;
     
     rclcpp::TimerBase::SharedPtr m_timer;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr m_publisher;
