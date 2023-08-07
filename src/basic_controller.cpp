@@ -65,7 +65,7 @@ class TurtlebotControl : public rclcpp::Node
         response->message = "Current control state matches request";
       } else {
         RCLCPP_INFO_STREAM(this->get_logger(), "Switching control state to " << request->data);
-        m_turtle_enabled = true;
+        m_turtle_enabled = request->data;
         response->success = true; 
         response->message = "Control state updated";
       }
