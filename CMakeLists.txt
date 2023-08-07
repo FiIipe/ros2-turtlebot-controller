@@ -18,10 +18,27 @@ add_executable(basic_controller_exe
   src/basic_controller.cpp
 )
 
-ament_target_dependencies(basic_controller_exe rclcpp geometry_msgs std_srvs)
+add_executable(basic_controller_service_client_exe
+  src/basic_controller_service_client.cpp
+)
+
+ament_target_dependencies(
+  basic_controller_exe 
+  rclcpp 
+  geometry_msgs 
+  std_srvs
+)
+
+ament_target_dependencies(
+  basic_controller_service_client_exe 
+  rclcpp 
+  geometry_msgs 
+  std_srvs
+)
 
 install(TARGETS
   basic_controller_exe
+  basic_controller_service_client_exe
   DESTINATION lib/${PROJECT_NAME}
 )
 
