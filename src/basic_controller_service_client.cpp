@@ -34,13 +34,17 @@ class ServiceClient : public rclcpp::Node
 
         auto request = std::make_shared<std_srvs::srv::SetBool::Request>();
 
-        if (true == m_state) {
-          request->data = 0;
-          m_state = 0;
-        } else {
-          request->data = 1;
-          m_state = 1;
-        }
+        request->data = (m_state == true) ? 0 : 1;
+        m_state = request->data;
+
+
+        // if (true == m_state) {
+        //   request->data = 0;
+        //   m_state = 0;
+        // } else {
+        //   request->data = 1;
+        //   m_state = 1;
+        // }
 
         while (!m_service_client->wait_for_service(1s)) {
           if (!rclcpp::ok()) {
