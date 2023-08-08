@@ -25,7 +25,15 @@ def generate_launch_description():
         ]
     )
 
+    turtlebot_controller_service_client_node = Node(
+        package='turtlebot_control',
+        executable='basic_controller_service_client_exe',
+        name='basic_controller_service_client_node',
+        output='screen',
+    )
+
     ld.add_action(turtlesim_node)
     ld.add_action(turtlebot_controller_node)
+    ld.add_action(turtlebot_controller_service_client_node)
 
     return ld
