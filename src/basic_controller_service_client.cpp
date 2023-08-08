@@ -42,7 +42,6 @@ class ServiceClient : public rclcpp::Node
           m_state = 1;
         }
 
-
         while (!m_service_client->wait_for_service(1s)) {
           if (!rclcpp::ok()) {
             RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service.");
@@ -56,9 +55,9 @@ class ServiceClient : public rclcpp::Node
         if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) ==
           rclcpp::FutureReturnCode::SUCCESS)
         {
-          RCLCPP_INFO(this->get_logger(), "AHAHAHAH");
+          RCLCPP_INFO(this->get_logger(), "Controller state successfully switched.");
         } else {
-          RCLCPP_ERROR(this->get_logger(), "Failed to call service add_two_ints");
+          RCLCPP_ERROR(this->get_logger(), "Failed to call service add_two_ints.");
         }
 
         rclcpp::sleep_for(5s);
