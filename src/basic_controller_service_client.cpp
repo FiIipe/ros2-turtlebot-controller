@@ -37,15 +37,6 @@ class ServiceClient : public rclcpp::Node
         request->data = (m_state == true) ? 0 : 1;
         m_state = request->data;
 
-
-        // if (true == m_state) {
-        //   request->data = 0;
-        //   m_state = 0;
-        // } else {
-        //   request->data = 1;
-        //   m_state = 1;
-        // }
-
         while (!m_service_client->wait_for_service(1s)) {
           if (!rclcpp::ok()) {
             RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service.");
@@ -66,7 +57,6 @@ class ServiceClient : public rclcpp::Node
 
         rclcpp::sleep_for(5s);
       }
-
     }
 
     bool m_state;
