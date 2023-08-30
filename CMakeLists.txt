@@ -9,7 +9,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(std_srvs REQUIRED)
+find_package(rclcpp_action REQUIRED)
+find_package(custom_interfaces REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -18,7 +19,12 @@ add_executable(basic_controller_exe
   src/basic_controller.cpp
 )
 
-ament_target_dependencies(basic_controller_exe rclcpp geometry_msgs std_srvs)
+ament_target_dependencies(
+  basic_controller_exe
+  rclcpp
+  rclcpp_action
+  geometry_msgs
+  custom_interfaces)
 
 install(TARGETS
   basic_controller_exe
