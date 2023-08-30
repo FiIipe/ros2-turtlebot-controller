@@ -20,12 +20,12 @@ class ServiceClient : public rclcpp::Node
 
       m_service_client = this->create_client<std_srvs::srv::SetBool>("enable_turtle");
 
-      main();
+      execute();
     }
 
   private:
 
-    void main()
+    void execute()
     {
       while(rclcpp::ok()) {
 
@@ -56,10 +56,8 @@ class ServiceClient : public rclcpp::Node
       }
     }
 
-    bool m_state;
-
-    rclcpp::TimerBase::SharedPtr m_timer;
     rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr m_service_client; 
+    bool m_state;
 };
 
 int main(int argc, char * argv[])
