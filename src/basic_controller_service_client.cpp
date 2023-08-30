@@ -9,8 +9,6 @@
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
-* member function as a callback from the timer. */
 
 class ServiceClient : public rclcpp::Node
 {
@@ -22,7 +20,6 @@ class ServiceClient : public rclcpp::Node
 
       m_service_client = this->create_client<std_srvs::srv::SetBool>("enable_turtle");
 
-      // Create a timer to publish our messages periodically
       main();
     }
 
