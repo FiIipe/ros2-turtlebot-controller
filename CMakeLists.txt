@@ -9,7 +9,17 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(std_srvs REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
+
+include_directories(
+  include
+  ${std_msgs_INCLUDE_DIRS}
+  ${lifecycle_msgs_INCLUDE_DIRS}
+  ${rclcpp_lifecycle_INCLUDE_DIRS}
+  ${rclcpp_INCLUDE_DIRS})
+
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -18,7 +28,12 @@ add_executable(basic_controller_exe
   src/basic_controller.cpp
 )
 
-ament_target_dependencies(basic_controller_exe rclcpp geometry_msgs std_srvs)
+ament_target_dependencies(basic_controller_exe 
+  rclcpp 
+  geometry_msgs 
+  rclcpp_lifecycle 
+  lifecycle_msgs
+)
 
 install(TARGETS
   basic_controller_exe

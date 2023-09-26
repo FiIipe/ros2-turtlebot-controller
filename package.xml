@@ -13,8 +13,14 @@
   <test_depend>ament_lint_common</test_depend>
 
   <depend>rclcpp</depend>
-  <depend>geoemtry_msgs</depend>
-  <depend>std_srvs</depend>
+
+  <build_depend>lifecycle_msgs</build_depend>
+  <build_depend>rclcpp_lifecycle</build_depend>
+  <build_depend>geoemtry_msgs</build_depend>
+
+  <exec_depend>rclcpp_lifecycle</exec_depend>
+  <exec_depend>lifecycle_msgs</exec_depend>
+  <exec_depend>geoemtry_msgs</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
