@@ -1,0 +1,8 @@
+# Request/goal: The amount of time that we want the turtle to sleep
+int64 sleep_duration
+---
+# Response/Result: Whether the turtle slept successfully or the action was interrupted 
+bool result
+---
+# Feedback: progress of the action
+int64 time_elapsed
